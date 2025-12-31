@@ -105,8 +105,9 @@ jobs:
               run: |
                   sudo apt-get update -y
                   sudo apt-get install -y autoconf autoconf-archive automake build-essential \
-                    ccache cmake curl gcc-14 g++-14 libcurl4-openssl-dev libssl-dev \
-                    libstdc++-14-dev nasm ninja-build tar unzip zip
+                    ccache cmake curl fonts-liberation2 gcc-14 g++-14 git libcurl4-openssl-dev \
+                    libdrm-dev libgl1-mesa-dev libssl-dev libstdc++-14-dev libtool nasm \
+                    ninja-build pkg-config python3-venv tar unzip zip
 
                   if [ "${{ matrix.toolchain }}" == "Clang" ]; then
                     curl -f -o /tmp/llvm.key https://apt.llvm.org/llvm-snapshot.gpg.key
