@@ -1,6 +1,7 @@
 # Itbaa (إطبع) - HTML to PDF Converter
 
-[![License](https://img.shields.io/badge/License-BSD_2--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/ahmedrowaihi?style=social)](https://github.com/sponsors/ahmedrowaihi)
 
 **Itbaa** (إطبع - Arabic for "Print") is a high-quality HTML to PDF conversion library and CLI tool built on [Ladybird](https://github.com/LadybirdBrowser/ladybird)'s rendering engine.
 
@@ -117,7 +118,17 @@ There is a known issue with bidirectional (BiDi) text rendering in Ladybird's en
 
 ## License
 
-BSD 2-Clause License
+Apache License 2.0 - see [LICENSE](LICENSE) for details.
+
+This project uses [Ladybird](https://github.com/LadybirdBrowser/ladybird) (BSD 2-Clause) - see [NOTICE](NOTICE) for third-party attributions.
+
+## Support
+
+If you find Itbaa useful, consider supporting its development:
+
+- [GitHub Sponsors](https://github.com/sponsors/ahmedrowaihi)
+- Star this repository
+- Report bugs and contribute
 
 ## Author
 
@@ -126,4 +137,4 @@ sudorw ([@ahmedrowaihi](https://github.com/ahmedrowaihi))
 
 ## Acknowledgments
 
-Built on [Ladybird](https://github.com/LadybirdBrowser/ladybird) browser engine.
+Built on [Ladybird](https://github.com/LadybirdBrowser/ladybird) browser engine by Andreas Kling and contributors.
