@@ -1,9 +1,10 @@
-# Itbaa (إطبع) - HTML to PDF Converter
+# Itbaa (اطبع) - HTML to PDF Converter
+
 [![Release](https://github.com/ahmedrowaihi/itbaa/actions/workflows/release.yml/badge.svg)](https://github.com/ahmedrowaihi/itbaa/actions/workflows/release.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/ahmedrowaihi?style=social)](https://github.com/sponsors/ahmedrowaihi)
 
-**Itbaa** (إطبع - Arabic for "Print") is a high-quality HTML to PDF conversion library and CLI tool built on [Ladybird](https://github.com/LadybirdBrowser/ladybird)'s rendering engine.
+**Itbaa** (اطبع - Arabic for "Print") is a high-quality HTML to PDF conversion library and CLI tool built on [Ladybird](https://github.com/LadybirdBrowser/ladybird)'s rendering engine.
 
 ## Features
 
@@ -116,8 +117,8 @@ There is a known issue with bidirectional (BiDi) text rendering in Ladybird's en
 
 **Upstream Issue:** [LadybirdBrowser/ladybird#7288](https://github.com/LadybirdBrowser/ladybird/issues/7288)
 
-
 ## History
+
 <picture>
   <source
     media="(prefers-color-scheme: dark)"

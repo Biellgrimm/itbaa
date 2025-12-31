@@ -1,5 +1,5 @@
 #!/bin/bash
-# Itbaa (إطبع) Build Script
+# Itbaa (اطبع) Build Script
 # Copyright (c) 2025, sudorw <ahmedrowaihi@sudorw.com>
 
 set -e
@@ -34,7 +34,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 echo "╔══════════════════════════════════════════════════════════════╗"
-echo "║           Itbaa (إطبع) - HTML to PDF Converter               ║"
+echo "║           Itbaa (اطبع) - HTML to PDF Converter               ║"
 echo "║           Copyright (c) 2025, Ahmed Rowaihi                  ║"
 echo "╚══════════════════════════════════════════════════════════════╝"
 echo ""
