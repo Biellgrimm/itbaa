@@ -93,7 +93,7 @@ jobs:
               run: |
                   brew update
                   brew install autoconf autoconf-archive automake bash ccache cmake coreutils \
-                    libtool nasm ninja pkg-config unzip
+                    libtool llvm@20 nasm ninja pkg-config unzip
 
             - name: Create cache directories
               run: mkdir -p ladybird/Build/caches/vcpkg-binary-cache
@@ -132,8 +132,8 @@ jobs:
             - name: Set compiler (macOS)
               if: matrix.os_name == 'macos'
               run: |
-                  echo "CC=$(xcrun --find clang)" >> "$GITHUB_ENV"
-                  echo "CXX=$(xcrun --find clang++)" >> "$GITHUB_ENV"
+                  echo "CC=$(brew --prefix llvm@20)/bin/clang" >> "$GITHUB_ENV"
+                  echo "CXX=$(brew --prefix llvm@20)/bin/clang++" >> "$GITHUB_ENV"
 
             - name: Configure
               working-directory: ladybird
