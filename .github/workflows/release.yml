@@ -131,7 +131,7 @@ jobs:
               if: steps.check-existing.outputs.skip != 'true'
               uses: hendrikmuhs/ccache-action@v1
               with:
-                  key: ${{ matrix.os_name }}-${{ matrix.arch }}
+                  key: ${{ matrix.os_name }}-${{ matrix.arch }}-${{ steps.ladybird-commit.outputs.commit }}
                   max-size: 3G
 
             - name: Create cache directories
@@ -181,13 +181,22 @@ jobs:
               if: steps.check-existing.outputs.skip != 'true'
               working-directory: ladybird
               run: |
-                  cmake --preset Itbaa_Static -B Build \
-                    -DCMAKE_C_COMPILER=$CC \
-                    -DCMAKE_CXX_COMPILER=$CXX \
-                    -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-                    -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                    -DBUILD_TESTING=OFF \
-                    -DENABLE_CI_BASELINE_CPU=ON
+                  if [ "${{ matrix.os_name }}" == "macos" ]; then
+                    cmake --preset Itbaa_Static -B Build \
+                      -DCMAKE_C_COMPILER="$CC" \
+                      -DCMAKE_CXX_COMPILER="$CXX" \
+                      -DBUILD_TESTING=OFF \
+                      -DENABLE_CI_BASELINE_CPU=ON \
+                      -DPython3_EXECUTABLE="${{ env.pythonLocation }}/bin/python" \
+                      -DCMAKE_OSX_DEPLOYMENT_TARGET="11.0"
+                  else
+                    cmake --preset Itbaa_Static -B Build \
+                      -DCMAKE_C_COMPILER="$CC" \
+                      -DCMAKE_CXX_COMPILER="$CXX" \
+                      -DBUILD_TESTING=OFF \
+                      -DENABLE_CI_BASELINE_CPU=ON \
+                      -DPython3_EXECUTABLE="${{ env.pythonLocation }}/bin/python"
+                  fi
 
             - name: Build
               if: steps.check-existing.outputs.skip != 'true'
@@ -216,10 +225,6 @@ jobs:
               with:
                   name: itbaa-${{ matrix.os_name }}-${{ matrix.arch }}
                   path: artifact/itbaa-${{ matrix.os_name }}-${{ matrix.arch }}.*
-
-            - name: Skip notification
-              if: steps.check-existing.outputs.skip == 'true'
-              run: echo "Build skipped - artifact already exists in release"
 
     release:
         name: Create Release
