@@ -126,6 +126,13 @@ jobs:
                   brew install autoconf autoconf-archive automake bash ccache cmake coreutils \
                     libtool llvm@20 nasm ninja pkg-config unzip
 
+            - name: Setup ccache
+              if: steps.check-existing.outputs.skip != 'true'
+              uses: hendrikmuhs/ccache-action@v1
+              with:
+                  key: ${{ matrix.os_name }}-${{ matrix.arch }}
+                  max-size: 3G
+
             - name: Create cache directories
               if: steps.check-existing.outputs.skip != 'true'
               run: mkdir -p ladybird/Build/caches/vcpkg-binary-cache
@@ -136,7 +143,7 @@ jobs:
               id: vcpkg-cache
               with:
                   path: ladybird/Build/caches/vcpkg-binary-cache
-                  key: vcpkg-binary-${{ matrix.os_name }}-${{ matrix.arch }}-${{ hashFiles('ladybird/vcpkg.json') }}
+                  key: vcpkg-binary-${{ matrix.os_name }}-${{ matrix.arch }}-${{ steps.ladybird-commit.outputs.commit }}
                   restore-keys: vcpkg-binary-${{ matrix.os_name }}-${{ matrix.arch }}-
 
             - name: Setup vcpkg
@@ -149,7 +156,7 @@ jobs:
               if: always() && steps.check-existing.outputs.skip != 'true'
               with:
                   path: ladybird/Build/caches/vcpkg-binary-cache
-                  key: vcpkg-binary-${{ matrix.os_name }}-${{ matrix.arch }}-${{ hashFiles('ladybird/vcpkg.json') }}
+                  key: vcpkg-binary-${{ matrix.os_name }}-${{ matrix.arch }}-${{ steps.ladybird-commit.outputs.commit }}
 
             - name: Set compiler (Linux GNU)
               if: steps.check-existing.outputs.skip != 'true' && matrix.os_name == 'linux' && matrix.toolchain == 'GNU'
@@ -176,6 +183,8 @@ jobs:
                   cmake --preset Itbaa_Static -B Build \
                     -DCMAKE_C_COMPILER=$CC \
                     -DCMAKE_CXX_COMPILER=$CXX \
+                    -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+                    -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
                     -DBUILD_TESTING=OFF
 
             - name: Build
