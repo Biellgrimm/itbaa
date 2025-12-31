@@ -116,6 +116,27 @@ There is a known issue with bidirectional (BiDi) text rendering in Ladybird's en
 
 **Upstream Issue:** [LadybirdBrowser/ladybird#7288](https://github.com/LadybirdBrowser/ladybird/issues/7288)
 
+
+## History
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=ahmedrowaihi/itbaa&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=ahmedrowaihi/itbaa&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=ahmedrowaihi/itbaa&type=Date"
+  />
+</picture>
+
 ## License
 
 Apache License 2.0 - see [LICENSE](LICENSE) for details.
