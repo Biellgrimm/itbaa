@@ -95,24 +95,27 @@ jobs:
                   brew install autoconf autoconf-archive automake bash ccache cmake coreutils \
                     libtool nasm ninja pkg-config unzip
 
-            - name: Restore vcpkg cache
+            - name: Create cache directories
+              run: mkdir -p ladybird/Build/caches/vcpkg-binary-cache
+
+            - name: Restore vcpkg binary cache
               uses: actions/cache/restore@v4
               id: vcpkg-cache
               with:
-                  path: ladybird/Build/vcpkg
-                  key: vcpkg-${{ matrix.os_name }}-${{ matrix.arch }}-${{ hashFiles('ladybird/vcpkg.json') }}
-                  restore-keys: vcpkg-${{ matrix.os_name }}-${{ matrix.arch }}-
+                  path: ladybird/Build/caches/vcpkg-binary-cache
+                  key: vcpkg-binary-${{ matrix.os_name }}-${{ matrix.arch }}-${{ hashFiles('ladybird/vcpkg.json') }}
+                  restore-keys: vcpkg-binary-${{ matrix.os_name }}-${{ matrix.arch }}-
 
             - name: Setup vcpkg
               working-directory: ladybird
               run: ./Toolchain/BuildVcpkg.py
 
-            - name: Save vcpkg cache
+            - name: Save vcpkg binary cache
               uses: actions/cache/save@v4
-              if: always() && steps.vcpkg-cache.outputs.cache-hit != 'true'
+              if: always()
               with:
-                  path: ladybird/Build/vcpkg
-                  key: vcpkg-${{ matrix.os_name }}-${{ matrix.arch }}-${{ hashFiles('ladybird/vcpkg.json') }}
+                  path: ladybird/Build/caches/vcpkg-binary-cache
+                  key: vcpkg-binary-${{ matrix.os_name }}-${{ matrix.arch }}-${{ hashFiles('ladybird/vcpkg.json') }}
 
             - name: Set compiler (Linux GNU)
               if: matrix.os_name == 'linux' && matrix.toolchain == 'GNU'
@@ -137,7 +140,8 @@ jobs:
               run: |
                   cmake --preset Itbaa_Static -B Build \
                     -DCMAKE_C_COMPILER=$CC \
-                    -DCMAKE_CXX_COMPILER=$CXX
+                    -DCMAKE_CXX_COMPILER=$CXX \
+                    -DBUILD_TESTING=OFF
 
             - name: Build
               working-directory: ladybird
