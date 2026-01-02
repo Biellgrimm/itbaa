@@ -1,7 +1,7 @@
 # Itbaa (اطبع) - HTML to PDF Converter
 
 [![Release](https://github.com/ahmedrowaihi/itbaa/actions/workflows/release.yml/badge.svg)](https://github.com/ahmedrowaihi/itbaa/actions/workflows/release.yml)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Commercial License](https://img.shields.io/badge/Commercial_License-Available-green.svg)](LICENSING.md)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/ahmedrowaihi?style=social)](https://github.com/sponsors/ahmedrowaihi)
 
 **Itbaa** (اطبع - Arabic for "Print") is a high-quality HTML to PDF conversion library and CLI tool built on [Ladybird](https://github.com/LadybirdBrowser/ladybird)'s rendering engine.
@@ -10,6 +10,7 @@
 
 - **Vector PDF output** - Generates true vector PDFs with selectable text
 - **Full font support** - Handles embedded fonts, base64 fonts, and system fonts
+
 - **International text** - Full support for RTL languages (Arabic, Hebrew) and complex scripts
 - **Multi-page documents** - Automatic pagination with configurable page sizes
 - **Full CSS support** - Modern CSS including flexbox, grid, and custom properties
@@ -103,6 +104,65 @@ int main() {
 }
 ```
 
+## Fonts and Consistency
+
+Itbaa ensures **identical PDF output regardless of which platform generates the PDF**. PDFs created on macOS will look exactly the same when viewed or printed on Linux, Windows, or any other system.
+
+### Font Loading Priority
+
+1. **HTML `@font-face` fonts** (highest priority)
+
+    - Fonts specified in your HTML via `@font-face` rules are automatically loaded
+    - These take priority over all other fonts for matching `font-family` names
+    - Supports local files, remote URLs, and base64-encoded fonts
+
+2. **Bundled fonts** (loaded FIRST for consistency)
+
+    - `NotoEmoji.ttf` - Emoji support (consistent across all platforms)
+    - `SerenitySans-Regular.ttf` - Default sans-serif font
+    - **These fonts are the same on macOS, Linux, and Windows**
+    - By loading bundled fonts first, PDFs generated on any platform will use the same fonts
+
+3. **System fonts** (loaded as fallback)
+
+    - **macOS**: `/System/Library/Fonts`, `/Library/Fonts`, `~/Library/Fonts`
+    - **Linux**: System font directories (via fontconfig or standard paths)
+    - **Windows**: `%WINDIR%\Fonts`, `%LOCALAPPDATA%\Microsoft\Windows\Fonts`
+    - System fonts provide additional emoji variants and fallback options
+    - Only used if bundled fonts don't have the required glyphs
+
+### Using Custom Fonts
+
+**Option 1: `@font-face` in HTML (Recommended)**
+
+```html
+<style>
+    @font-face {
+        font-family: "MyFont";
+        src: url("path/to/font.ttf") format("truetype");
+    }
+    body {
+        font-family: "MyFont", sans-serif;
+    }
+</style>
+```
+
+**For consistent emoji rendering (Apple Color Emoji style):**
+
+```html
+<style>
+    @font-face {
+        font-family: "Apple Color Emoji";
+        src: url("https://github.com/samuelngs/apple-emoji-linux/releases/download/v15.4/AppleColorEmoji.ttf") format("truetype");
+    }
+    body {
+        font-family: -apple-system, "Apple Color Emoji", sans-serif;
+    }
+</style>
+```
+
+This ensures emojis look identical across all platforms (macOS-style emojis everywhere).
+
 ## Building for Distribution
 
 For static builds suitable for distribution:
@@ -156,7 +216,14 @@ There is a known issue with bidirectional (BiDi) text rendering in Ladybird's en
 
 ## License
 
-Apache License 2.0 - see [LICENSE](LICENSE) for details.
+Itbaa is available under **dual licensing**:
+
+- **Apache License 2.0** - For open-source use (see [LICENSE](LICENSE))
+- **Commercial License** - For commercial use without open-source obligations (see [COMMERCIAL_LICENSE](COMMERCIAL_LICENSE))
+
+For details on both licensing options, see [LICENSING.md](LICENSING.md).
+
+**Commercial licensing inquiries:** <ahmedrowaihi@sudorw.com>
 
 This project uses [Ladybird](https://github.com/LadybirdBrowser/ladybird) (BSD 2-Clause) - see [NOTICE](NOTICE) for third-party attributions.
 
