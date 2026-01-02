@@ -1868,11 +1868,11 @@ index 0000000000..afb8296b82
 +} // namespace Itbaa
 diff --git a/itbaa-dist b/itbaa-dist
 new file mode 160000
-index 0000000000..28243f667c
+index 0000000000..43b4461e2d
 --- /dev/null
 +++ b/itbaa-dist
 @@ -0,0 +1 @@
-+Subproject commit 28243f667c1e341a7d9f961904734dde191afeec-dirty
++Subproject commit 43b4461e2dcaea580b0c55d08707a9e6d6a6fda0-dirty
 diff --git a/vcpkg.json b/vcpkg.json
 index ffbb406aa1..31189c8df7 100644
 --- a/vcpkg.json
